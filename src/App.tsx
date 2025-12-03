@@ -1,13 +1,18 @@
-
+import { UserCard } from "./components/common/UserCard"
+import { Navbar } from "./components/layout/NavBar"
 
 function App() {
+
+  
   
 
   return (
     <div>
-     <h1 className="text-4xl font-bold text-pink-500">
-  Tailwind çalışıyor mu? 💅
-</h1>
+
+     <Navbar></Navbar>
+     <div className ="flex justify-center items-center pt-10">
+      <UserCard ></UserCard></div>
+     
 
     </div>
   )
