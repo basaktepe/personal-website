@@ -23,7 +23,7 @@ export function UserCard() {
         <div className="text-center space-y-1">
           <h1 className="text-xl font-semibold">Başak Tepe</h1>
           <p className="text-sm text-muted-foreground">
-            Computer Engineering Graduate &amp; Frontend Developer
+            Computer Engineering Graduate &amp; Jr. Fullstack Developer
           </p>
         </div>
 
@@ -34,7 +34,7 @@ export function UserCard() {
             </a>
           </Button>
           <Button variant="outline" size="icon" asChild>
-            <a href="https://www.linkedin.com/basaktepe" target="_blank" rel="noreferrer">
+            <a href="https://www.linkedin.com/basaktepe/" target="_blank" rel="noreferrer">
               <Linkedin className="h-4 w-4" />
             </a>
           </Button>
