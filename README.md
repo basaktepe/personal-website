@@ -1,4 +1,4 @@
-```markdown
+
 # Personal Website & Admin Panel
 
 A modern personal portfolio website built with **React + TypeScript + Vite**, styled using **TailwindCSS** and **shadcn/ui**, and powered by **Firebase Authentication, Firestore, and Storage** for dynamic content management.
@@ -50,7 +50,6 @@ The Admin can manage: Name, Title, Social links, About text, and CV file. The pu
 
 ## 📂 Project Structure
 
-```
 
 src/
 ├── components/
