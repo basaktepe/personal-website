@@ -48,9 +48,10 @@ The Admin can manage: Name, Title, Social links, About text, and CV file. The pu
 
 ---
 
+
 ## 📂 Project Structure
 
-
+```
 src/
 ├── components/
 │ ├── ui/ \# shadcn components
@@ -75,8 +76,8 @@ src/
 │ └── ProtectedRoute.tsx
 │
 └── App.tsx
+```
 
-````
 
 ---
 
@@ -174,17 +175,7 @@ Dark/Light mode control is achieved by:
   * Automatically follows system preference on the first load.
   * Uses Tailwind’s class-based dark mode (`darkMode: "class"`).
 
------
 
-## 🧱 Future Enhancements
-
-  * Projects admin panel (CRUD)
-  * Contact form (Formspree / Firebase Functions)
-  * Uploadable profile image
-  * Detailed admin layout with sidebar
-  * Tech stack badges for projects
-
------
 
 ## 🤝 Contributions
 
@@ -196,6 +187,3 @@ Feel free to open an issue or submit a PR.
 ## 📜 License
 
 MIT License © 2025 Başak Tepe
-
-```
-```
