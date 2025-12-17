@@ -1,5 +1,5 @@
-import React, { createContext, useContext, useEffect, useState, ReactNode, useCallback } from 'react';
-import { collection, getDocs, query, orderBy } from 'firebase/firestore';
+import { createContext, useContext, useEffect, useState, type ReactNode } from 'react';
+import { collection, getDocs, query } from 'firebase/firestore'; 
 import { db } from '@/lib/firebase';
 
 export type ProjectInfo = {

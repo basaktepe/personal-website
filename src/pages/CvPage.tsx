@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/button";
 import { doc, getDoc } from "firebase/firestore";
 import { db } from "@/lib/firebase";
 import { useEffect, useState } from "react";
-import { Loader2, Download, Eye } from "lucide-react";
+import { Loader2, Download } from "lucide-react";
 
 export default function CvPage() {
   const [url, setUrl] = useState<string | null>(null);
