@@ -11,8 +11,10 @@ import AdminLoginPage from "@/pages/admin/AdminLoginPage";
 import AdminDashboardPage from "@/pages/admin/AdminDashboardPage";
 import AdminSettingsPage from "@/pages/admin/AdminSettingsPage";
 import AdminCvPage from "@/pages/admin/AdminCvPage";
+import AdminProjectPage from "./pages/admin/AdminProjectsPage";
 
 import { ProtectedRoute } from "@/router/ProtectedRoute";
+
 
 function App() {
 
@@ -27,7 +29,8 @@ function App() {
       <UserCard ></UserCard></div>
       <Routes>
           {/* Public */}
-        <Route path="/" element={<HomePage />} />
+        <Route path="/"  element={<HomePage />} />
+        <Route path="/home"  element={<HomePage />} />
         <Route path="/projects" element={<ProjectPage />} />
         <Route path="/cv" element={<CvPage />} />
         <Route path="/contact" element={<ContactPage />} />
@@ -40,6 +43,7 @@ function App() {
             <Route path="/admin" element={<AdminDashboardPage />} />
             <Route path="/admin/settings" element={<AdminSettingsPage />} />
             <Route path="/admin/cv" element={<AdminCvPage />} />
+            <Route path="/admin/projects" element={<AdminProjectPage />} />
             
           </Route>
 

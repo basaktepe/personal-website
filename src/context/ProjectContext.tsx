@@ -1,61 +1,52 @@
 import React, { createContext, useContext, useEffect, useState, ReactNode, useCallback } from 'react';
-import { doc, getDoc } from 'firebase/firestore';
+import { collection, getDocs, query, orderBy } from 'firebase/firestore';
 import { db } from '@/lib/firebase';
 
-type ProjectInfo = {
+export type ProjectInfo = {
+    id?: string; 
     title: string;
     description: string;
-    link : string;
-};
-
-const DEFAULT_PROJECT: ProjectInfo = {
-    title: "",
-    description: "",
-    link: "#",
+    link: string;
+    createdAt?: any;
 };
 
 interface ProjectContextType {
-    project: ProjectInfo;
+    projects: ProjectInfo[];
     isLoading: boolean;
-    refreshProject: () => Promise<void>;
+    refreshProjects: () => Promise<void>;
 }
 
 const ProjectContext = createContext<ProjectContextType | undefined>(undefined);
 
 export const ProjectProvider = ({ children }: { children: ReactNode }) => {
-    const [project, setProject] = useState<ProjectInfo>(DEFAULT_PROJECT);
+    const [projects, setProjects] = useState<ProjectInfo[]>([]);
     const [isLoading, setIsLoading] = useState(true);
 
-    const fetchProject = useCallback(async () => {
+    const fetchProjects = useCallback(async () => {
         setIsLoading(true);
         try {
-            const ref = doc(db, "settings", "project");
-            const snap = await getDoc(ref); 
-
-            if (snap.exists()) {
-                setProject(snap.data() as ProjectInfo);
-            } else {
-                setProject(DEFAULT_PROJECT);
-            }
+            
+            const q = query(collection(db, "projects")); 
+            const querySnapshot = await getDocs(q);
+            const projectList = querySnapshot.docs.map(doc => ({
+                id: doc.id,
+                ...doc.data()
+            })) as ProjectInfo[];
+            
+            setProjects(projectList);
         } catch (error) {
-            console.error("Profil Context verisi çekilemedi:", error);
+            console.error("Projeler çekilemedi:", error);
         } finally {
             setIsLoading(false);
         }
     }, []);
 
     useEffect(() => {
-        fetchProject();
-    }, [fetchProject]);
-
-    const contextValue = {
-        project,
-        isLoading,
-        refreshProfile: fetchProject,
-    };
+        fetchProjects();
+    }, [fetchProjects]);
 
     return (
-        <ProjectContext.Provider value={contextValue}>
+        <ProjectContext.Provider value={{ projects, isLoading, refreshProjects: fetchProjects }}>
             {children}
         </ProjectContext.Provider>
     );
@@ -63,8 +54,6 @@ export const ProjectProvider = ({ children }: { children: ReactNode }) => {
 
 export const useProject = () => {
     const context = useContext(ProjectContext);
-    if (context === undefined) {
-        throw new Error('useProfile, ProfileProvider içinde kullanılmalıdır.');
-    }
+    if (!context) throw new Error('useProject, ProjectProvider içinde kullanılmalıdır.');
     return context;
 };
