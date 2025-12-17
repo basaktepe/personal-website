@@ -2,7 +2,6 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
 import { Github, Linkedin } from "lucide-react";
-import pfp from "@/assets/pfp.png"; 
 import { useProfile } from "@/context/ProfileContext"; 
 
 export function UserCard() {
@@ -17,11 +16,11 @@ export function UserCard() {
     }
     
     return (
-        <Card className=" w-full max-w-xs sm:max-w-sm md:max-w-md lg:max-w-lg xl:max-w-xl border bg-background/60 ">
+        <Card className="w-full max-w-xs sm:max-w-sm md:max-w-md lg:max-w-lg xl:max-w-xl border bg-background/60">
             <CardContent className="flex flex-col items-center gap-4 pt-6 pb-6">
                 <Avatar className="h-20 w-20">
-                    <AvatarImage src={pfp} alt={profile.name} />
-                    <AvatarFallback>BT</AvatarFallback>
+                    <AvatarImage src={profile.avatarUrl} alt={profile.name} />
+                    <AvatarFallback>{profile.name?.charAt(0) || "BT"}</AvatarFallback>
                 </Avatar>
 
                 <div className="text-center space-y-1">
@@ -33,12 +32,12 @@ export function UserCard() {
 
                 <div className="flex gap-2">
                     <Button variant="outline" size="icon" asChild>
-                        <a href={profile.github} target="_blank" rel="noreferrer" aria-label="GitHub"> 
+                        <a href={profile.github} target="_blank" rel="noreferrer"> 
                             <Github className="h-4 w-4" />
                         </a>
                     </Button>
                     <Button variant="outline" size="icon" asChild>
-                        <a href={profile.linkedin} target="_blank" rel="noreferrer" aria-label="LinkedIn"> 
+                        <a href={profile.linkedin} target="_blank" rel="noreferrer"> 
                             <Linkedin className="h-4 w-4" />
                         </a>
                     </Button>

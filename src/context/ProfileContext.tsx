@@ -7,6 +7,7 @@ type ProfileSettings = {
     title: string;
     github: string;
     linkedin: string;
+    avatarUrl: string;
 };
 
 const DEFAULT_PROFILE: ProfileSettings = {
@@ -14,6 +15,7 @@ const DEFAULT_PROFILE: ProfileSettings = {
     title: "",
     github: "#",
     linkedin: "#",
+    avatarUrl: "",
 };
 
 interface ProfileContextType {
@@ -40,7 +42,7 @@ export const ProfileProvider = ({ children }: { children: ReactNode }) => {
                 setProfile(DEFAULT_PROFILE);
             }
         } catch (error) {
-            console.error("Profil Context verisi çekilemedi:", error);
+            console.error(error);
         } finally {
             setIsLoading(false);
         }
@@ -66,7 +68,7 @@ export const ProfileProvider = ({ children }: { children: ReactNode }) => {
 export const useProfile = () => {
     const context = useContext(ProfileContext);
     if (context === undefined) {
-        throw new Error('useProfile, ProfileProvider içinde kullanılmalıdır.');
+        throw new Error('useProfile must be used within a ProfileProvider');
     }
     return context;
 };
