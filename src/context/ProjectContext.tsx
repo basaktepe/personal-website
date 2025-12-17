@@ -1,4 +1,4 @@
-import { createContext, useContext, useEffect, useState, type ReactNode } from 'react';
+import { createContext, useContext, useEffect, useState, useCallback, type ReactNode } from 'react';
 import { collection, getDocs, query } from 'firebase/firestore'; 
 import { db } from '@/lib/firebase';
 
