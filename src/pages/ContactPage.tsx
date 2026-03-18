@@ -3,9 +3,11 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
 import { useState } from "react";
+import { useTranslation } from "react-i18next";
 
 export default function ContactPage() {
   const [status, setStatus] = useState("idle");
+  const { t } = useTranslation();
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -26,24 +28,24 @@ export default function ContactPage() {
 
   return (
     <div className="py-12 max-w-xl mx-auto px-4">
-      <h1 className="text-3xl font-bold text-center mb-8">Bana Ulaş</h1>
+      <h1 className="text-3xl font-bold text-center mb-8">{t("contact.title")}</h1>
 
       <Card className="bg-background/60">
         <CardContent className="p-6">
           <form onSubmit={handleSubmit} className="space-y-4">
-            <Input name="name" placeholder="Adınız" required />
-            <Input name="email" placeholder="Email" required type="email" />
-            <Textarea name="message" placeholder="Mesajınız" required />
+            <Input name="name" placeholder={t("contact.name")} required />
+            <Input name="email" placeholder={t("contact.email")} required type="email" />
+            <Textarea name="message" placeholder={t("contact.message")} required />
 
             <Button type="submit" className="w-full">
-              {status === "loading" ? "Gönderiliyor..." : "Gönder"}
+              {status === "loading" ? t("contact.sending") : t("contact.send")}
             </Button>
 
             {status === "success" && (
-              <p className="text-green-600 text-sm mt-2">Mesaj gönderildi!</p>
+              <p className="text-green-600 text-sm mt-2">{t("contact.success")}</p>
             )}
             {status === "error" && (
-              <p className="text-red-600 text-sm mt-2">Bir hata oluştu.</p>
+              <p className="text-red-600 text-sm mt-2">{t("contact.error")}</p>
             )}
           </form>
         </CardContent>

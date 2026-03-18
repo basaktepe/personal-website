@@ -2,9 +2,11 @@ import { useProject } from '@/context/ProjectContext';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { ExternalLink, FolderCode } from "lucide-react";
+import { useTranslation } from "react-i18next";
 
 export default function ProjectPage() {
     const { projects, isLoading } = useProject();
+    const { t } = useTranslation();
 
     if (isLoading) {
         return (
@@ -17,15 +19,15 @@ export default function ProjectPage() {
     return (
         <div className="container mx-auto py-12 px-4">
             <div className="flex flex-col items-center mb-10 space-y-2">
-                <h1 className="text-3xl font-bold tracking-tighter sm:text-5xl">Projelerim</h1>
+                <h1 className="text-3xl font-bold tracking-tighter sm:text-5xl">{t("projects.title")}</h1>
                 <p className="text-muted-foreground text-center max-w-[600px] !mt-6">
-                    Geliştirdiğim projeler ve üzerinde çalıştığım çalışmaların bir listesi.
+                    {t("projects.subtitle")}
                 </p>
             </div>
 
             {projects.length === 0 ? (
                 <div className="text-center py-20 text-muted-foreground">
-                    Henüz bir proje eklenmemiş.
+                    {t("projects.empty")}
                 </div>
             ) : (
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -35,7 +37,7 @@ export default function ProjectPage() {
                                 <div className="flex items-center space-x-2 mb-2">
                                     <FolderCode className="w-5 h-5 text-primary" />
                                     <span className="text-xs font-medium text-muted-foreground uppercase tracking-wider">
-                                        Project
+                                        {t("projects.label")}
                                     </span>
                                 </div>
                                 <CardTitle className="text-xl">{proj.title}</CardTitle>
@@ -47,13 +49,13 @@ export default function ProjectPage() {
                             </CardContent>
                             <CardFooter className="border-t pt-4">
                                 <Button asChild variant="outline" className="w-full">
-                                    <a 
-                                        href={proj.link} 
-                                        target="_blank" 
+                                    <a
+                                        href={proj.link}
+                                        target="_blank"
                                         rel="noopener noreferrer"
                                         className="flex items-center justify-center gap-2"
                                     >
-                                        İncele <ExternalLink className="w-4 h-4" />
+                                        {t("projects.view")} <ExternalLink className="w-4 h-4" />
                                     </a>
                                 </Button>
                             </CardFooter>

@@ -4,12 +4,14 @@ import { useAuth } from "@/context/AuthContext";
 import { Card, CardContent } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
+import { useTranslation } from "react-i18next";
 
 export default function AdminLoginPage() {
   const { login } = useAuth();
   const navigate = useNavigate();
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
+  const { t } = useTranslation();
 
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
@@ -24,7 +26,7 @@ export default function AdminLoginPage() {
       await login(email, password);
       navigate("/admin", { replace: true });
     } catch (err) {
-      setError("Giriş başarısız. Email veya şifre hatalı olabilir.");
+      setError(t("admin.login.error"));
       console.error(err);
     } finally {
       setLoading(false);
@@ -35,12 +37,12 @@ export default function AdminLoginPage() {
     <div className="flex items-center justify-center py-16">
       <Card className="w-full max-w-md bg-background/70">
         <CardContent className="p-6">
-          <h1 className="text-2xl font-semibold mb-4 text-center">Admin Login</h1>
+          <h1 className="text-2xl font-semibold mb-4 text-center">{t("admin.login.title")}</h1>
           <form onSubmit={handleSubmit} className="space-y-4">
             <Input name="email" type="email" placeholder="Email" required />
-            <Input name="password" type="password" placeholder="Şifre" required />
+            <Input name="password" type="password" placeholder={t("admin.login.password")} required />
             <Button type="submit" className="w-full" disabled={loading}>
-              {loading ? "Giriş yapılıyor..." : "Giriş Yap"}
+              {loading ? t("admin.login.loggingIn") : t("admin.login.loginButton")}
             </Button>
             {error && <p className="text-sm text-red-500 text-center">{error}</p>}
           </form>

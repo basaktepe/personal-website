@@ -1,0 +1,96 @@
+{
+  "nav": {
+    "projects": "Projects",
+    "cv": "CV",
+    "contact": "Contact"
+  },
+  "home": {
+    "greeting": "Hello, I'm Basak Tepe.",
+    "welcome": "Welcome to my personal website. Here you can explore the projects I've developed, my technical skills, and my career journey.",
+    "contactInfo": "If you have any questions, feel free to reach out via LinkedIn or the Contact section."
+  },
+  "projects": {
+    "title": "My Projects",
+    "subtitle": "A list of the projects I've developed and the work I've been involved in.",
+    "empty": "No projects have been added yet.",
+    "label": "Project",
+    "view": "View"
+  },
+  "cv": {
+    "title": "Resume",
+    "loading": "Loading CV...",
+    "notFound": "No CV file found to display.",
+    "download": "Download CV"
+  },
+  "contact": {
+    "title": "Contact Me",
+    "name": "Your Name",
+    "email": "Email",
+    "message": "Your Message",
+    "send": "Send",
+    "sending": "Sending...",
+    "success": "Message sent!",
+    "error": "An error occurred."
+  },
+  "userCard": {
+    "loading": "Loading profile...",
+    "defaultTitle": "Software Developer"
+  },
+  "common": {
+    "loading": "Loading..."
+  },
+  "admin": {
+    "login": {
+      "title": "Admin Login",
+      "password": "Password",
+      "loginButton": "Log In",
+      "loggingIn": "Logging in...",
+      "error": "Login failed. Email or password may be incorrect."
+    },
+    "dashboard": {
+      "title": "Admin Dashboard",
+      "profileSettings": "Profile Settings",
+      "cvManagement": "CV Management",
+      "projects": "Projects"
+    },
+    "settings": {
+      "title": "Profile Settings",
+      "selectPhoto": "Select Photo",
+      "fullName": "Full Name",
+      "titlePlaceholder": "Title",
+      "github": "GitHub",
+      "linkedin": "LinkedIn",
+      "saving": "Saving...",
+      "save": "Save",
+      "success": "Profile updated successfully!",
+      "error": "Operation failed."
+    },
+    "projects": {
+      "title": "Project Management",
+      "editProject": "Edit Project",
+      "addProject": "Add New Project",
+      "projectTitle": "Project Title",
+      "description": "Description",
+      "projectLink": "Project Link",
+      "confirm": "Are you sure?",
+      "added": "New project added!",
+      "updated": "Project updated!",
+      "deleted": "Project deleted.",
+      "error": "Operation failed.",
+      "update": "Update",
+      "add": "Add",
+      "cancel": "Cancel",
+      "edit": "Edit",
+      "delete": "Delete"
+    },
+    "cv": {
+      "title": "CV Management",
+      "upload": "Upload CV",
+      "uploading": "Uploading...",
+      "selectFile": "Please select a file to upload.",
+      "uploadingInfo": "Uploading CV file...",
+      "success": "CV uploaded and updated on the site successfully!",
+      "error": "Upload failed! Check Firebase Storage rules."
+    }
+  }
+}

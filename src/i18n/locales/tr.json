@@ -1,0 +1,96 @@
+{
+  "nav": {
+    "projects": "Projeler",
+    "cv": "CV",
+    "contact": "Bana Ulaş"
+  },
+  "home": {
+    "greeting": "Merhaba, ben Başak Tepe.",
+    "welcome": "Kişisel web siteme hoş geldiniz. Burada geliştirdiğim projeleri, teknik yetkinliklerimi, kariyer yolculuğumu inceleyebilirsiniz.",
+    "contactInfo": "Herhangi bir sorunuz olursa linkedin üzerinden veya Bana Ulaş kısmından ulaşabilirsiniz."
+  },
+  "projects": {
+    "title": "Projelerim",
+    "subtitle": "Geliştirdiğim projeler ve üzerinde çalıştığım çalışmaların bir listesi.",
+    "empty": "Henüz bir proje eklenmemiş.",
+    "label": "Project",
+    "view": "İncele"
+  },
+  "cv": {
+    "title": "Özgeçmiş",
+    "loading": "CV Yükleniyor...",
+    "notFound": "Görüntülenecek CV dosyası bulunamadı.",
+    "download": "CV'yi İndir"
+  },
+  "contact": {
+    "title": "Bana Ulaş",
+    "name": "Adınız",
+    "email": "Email",
+    "message": "Mesajınız",
+    "send": "Gönder",
+    "sending": "Gönderiliyor...",
+    "success": "Mesaj gönderildi!",
+    "error": "Bir hata oluştu."
+  },
+  "userCard": {
+    "loading": "Profil yükleniyor...",
+    "defaultTitle": "Yazılım Geliştirici"
+  },
+  "common": {
+    "loading": "Yükleniyor..."
+  },
+  "admin": {
+    "login": {
+      "title": "Admin Login",
+      "password": "Şifre",
+      "loginButton": "Giriş Yap",
+      "loggingIn": "Giriş yapılıyor...",
+      "error": "Giriş başarısız. Email veya şifre hatalı olabilir."
+    },
+    "dashboard": {
+      "title": "Admin Dashboard",
+      "profileSettings": "Profil Ayarları",
+      "cvManagement": "CV Yönetimi",
+      "projects": "Projeler"
+    },
+    "settings": {
+      "title": "Profil Ayarları",
+      "selectPhoto": "Fotoğraf Seç",
+      "fullName": "Ad Soyad",
+      "titlePlaceholder": "Title",
+      "github": "GitHub",
+      "linkedin": "LinkedIn",
+      "saving": "Kaydediliyor...",
+      "save": "Kaydet",
+      "success": "Profil başarıyla güncellendi!",
+      "error": "İşlem başarısız oldu."
+    },
+    "projects": {
+      "title": "Proje Yönetimi",
+      "editProject": "Projeyi Düzenle",
+      "addProject": "Yeni Proje Ekle",
+      "projectTitle": "Proje Başlığı",
+      "description": "Açıklama",
+      "projectLink": "Proje Linki",
+      "confirm": "Emin misiniz?",
+      "added": "Yeni proje eklendi!",
+      "updated": "Proje güncellendi!",
+      "deleted": "Proje silindi.",
+      "error": "İşlem başarısız.",
+      "update": "Güncelle",
+      "add": "Ekle",
+      "cancel": "Vazgeç",
+      "edit": "Düzenle",
+      "delete": "Sil"
+    },
+    "cv": {
+      "title": "CV Yönetimi",
+      "upload": "CV Yükle",
+      "uploading": "Yükleniyor...",
+      "selectFile": "Lütfen yüklenecek bir dosya seçin.",
+      "uploadingInfo": "CV dosyası yükleniyor...",
+      "success": "CV başarıyla yüklendi ve siteye güncellendi!",
+      "error": "Yükleme başarısız oldu! Firebase Storage Kurallarını kontrol edin."
+    }
+  }
+}
