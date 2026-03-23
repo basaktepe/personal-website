@@ -1,10 +1,11 @@
 import { createContext, useContext, useEffect, useState, useCallback, type ReactNode } from 'react';
 import { doc, getDoc } from 'firebase/firestore';
 import { db } from '@/lib/firebase';
+import type { LocalizedString } from '@/types/localized';
 
-type ProfileSettings = {
+export type ProfileSettings = {
     name: string;
-    title: string;
+    title: LocalizedString;
     github: string;
     linkedin: string;
     avatarUrl: string;
@@ -12,7 +13,7 @@ type ProfileSettings = {
 
 const DEFAULT_PROFILE: ProfileSettings = {
     name: "",
-    title: "",
+    title: { tr: "", en: "" },
     github: "#",
     linkedin: "#",
     avatarUrl: "",

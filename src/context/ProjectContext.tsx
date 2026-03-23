@@ -2,10 +2,12 @@ import { createContext, useContext, useEffect, useState, useCallback, type React
 import { collection, getDocs, query } from 'firebase/firestore'; 
 import { db } from '@/lib/firebase';
 
+import type { LocalizedString } from '@/types/localized';
+
 export type ProjectInfo = {
-    id?: string; 
-    title: string;
-    description: string;
+    id?: string;
+    title: LocalizedString;
+    description: LocalizedString;
     link: string;
     createdAt?: any;
 };

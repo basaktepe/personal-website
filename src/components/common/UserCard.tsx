@@ -4,10 +4,11 @@ import { Button } from "@/components/ui/button";
 import { Github, Linkedin } from "lucide-react";
 import { useProfile } from "@/context/ProfileContext";
 import { useTranslation } from "react-i18next";
+import { getLocalizedValue } from "@/types/localized";
 
 export function UserCard() {
     const { profile, isLoading } = useProfile();
-    const { t } = useTranslation();
+    const { t, i18n } = useTranslation();
 
     if (isLoading) {
         return (
@@ -28,7 +29,7 @@ export function UserCard() {
                 <div className="text-center space-y-1">
                     <h1 className="text-xl font-semibold">{profile.name}</h1>
                     <p className="text-sm text-muted-foreground">
-                        {profile.title || t("userCard.defaultTitle")}
+                        {getLocalizedValue(profile.title, i18n.language) || t("userCard.defaultTitle")}
                     </p>
                 </div>
 

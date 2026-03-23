@@ -3,10 +3,11 @@ import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle }
 import { Button } from "@/components/ui/button";
 import { ExternalLink, FolderCode } from "lucide-react";
 import { useTranslation } from "react-i18next";
+import { getLocalizedValue } from "@/types/localized";
 
 export default function ProjectPage() {
     const { projects, isLoading } = useProject();
-    const { t } = useTranslation();
+    const { t, i18n } = useTranslation();
 
     if (isLoading) {
         return (
@@ -40,11 +41,11 @@ export default function ProjectPage() {
                                         {t("projects.label")}
                                     </span>
                                 </div>
-                                <CardTitle className="text-xl">{proj.title}</CardTitle>
+                                <CardTitle className="text-xl">{getLocalizedValue(proj.title, i18n.language)}</CardTitle>
                             </CardHeader>
                             <CardContent className="flex-grow">
                                 <CardDescription className="text-sm text-gray-600 dark:text-gray-400">
-                                    {proj.description}
+                                    {getLocalizedValue(proj.description, i18n.language)}
                                 </CardDescription>
                             </CardContent>
                             <CardFooter className="border-t pt-4">

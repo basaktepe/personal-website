@@ -7,10 +7,12 @@ import { Button } from "@/components/ui/button";
 import { toast } from 'react-toastify';
 import { useProfile } from '@/context/ProfileContext';
 import { useTranslation } from "react-i18next";
+import type { LocalizedString } from "@/types/localized";
+import { emptyLocalizedString } from "@/types/localized";
 
 type ProfileSettings = {
     name: string;
-    title: string;
+    title: LocalizedString;
     github: string;
     linkedin: string;
     avatarUrl: string;
@@ -19,7 +21,7 @@ type ProfileSettings = {
 export default function AdminSettingsPage() {
     const [profile, setProfile] = useState<ProfileSettings>({
         name: "",
-        title: "",
+        title: emptyLocalizedString(),
         github: "",
         linkedin: "",
         avatarUrl: "",
@@ -35,7 +37,14 @@ export default function AdminSettingsPage() {
                 const ref = doc(db, "settings", "profile");
                 const snap = await getDoc(ref);
                 if (snap.exists()) {
-                    setProfile(snap.data() as ProfileSettings);
+                    const data = snap.data();
+                    setProfile({
+                        ...data,
+                        // Backward compat: if title is a plain string, convert it
+                        title: typeof data.title === "string"
+                            ? { tr: data.title, en: "" }
+                            : data.title || emptyLocalizedString(),
+                    } as ProfileSettings);
                 }
             } catch (error) {
                 console.error(error);
@@ -46,6 +55,13 @@ export default function AdminSettingsPage() {
 
     const handleChange = (field: keyof ProfileSettings, value: string) => {
         setProfile((prev) => ({ ...prev, [field]: value }));
+    };
+
+    const handleTitleChange = (lang: keyof LocalizedString, value: string) => {
+        setProfile((prev) => ({
+            ...prev,
+            title: { ...prev.title, [lang]: value },
+        }));
     };
 
     const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -98,7 +114,16 @@ export default function AdminSettingsPage() {
                 </div>
 
                 <Input value={profile.name} onChange={(e) => handleChange("name", e.target.value)} placeholder={t("admin.settings.fullName")} disabled={isLoading} />
-                <Input value={profile.title} onChange={(e) => handleChange("title", e.target.value)} placeholder={t("admin.settings.titlePlaceholder")} disabled={isLoading} />
+
+                <div className="w-full space-y-2">
+                    <label className="text-sm font-medium text-muted-foreground">{t("admin.settings.titlePlaceholder")} (TR)</label>
+                    <Input value={profile.title.tr} onChange={(e) => handleTitleChange("tr", e.target.value)} placeholder="Yazılım Geliştirici" disabled={isLoading} />
+                </div>
+                <div className="w-full space-y-2">
+                    <label className="text-sm font-medium text-muted-foreground">{t("admin.settings.titlePlaceholder")} (EN)</label>
+                    <Input value={profile.title.en} onChange={(e) => handleTitleChange("en", e.target.value)} placeholder="Software Developer" disabled={isLoading} />
+                </div>
+
                 <Input value={profile.github} onChange={(e) => handleChange("github", e.target.value)} placeholder={t("admin.settings.github")} disabled={isLoading} />
                 <Input value={profile.linkedin} onChange={(e) => handleChange("linkedin", e.target.value)} placeholder={t("admin.settings.linkedin")} disabled={isLoading} />
 
